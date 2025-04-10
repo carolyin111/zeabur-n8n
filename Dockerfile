@@ -23,6 +23,7 @@ RUN apt-get install -y \
     libxrandr2 \
     libgbm1 \
     libasound2 \
+    git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -33,6 +34,9 @@ RUN pip install --no-cache-dir \
 
 # 設置工作目錄
 WORKDIR /app
+
+# 克隆TiktokAutoUploader儲存庫
+RUN git clone https://github.com/carolyin111/TiktokAutoUploader.git /app/TiktokAutoUploader
 
 # 複製應用程式檔案
 COPY . /app
